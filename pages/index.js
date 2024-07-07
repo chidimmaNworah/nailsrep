@@ -1,123 +1,168 @@
-import Image from "next/image";
+import Header from "@/components/header";
+import Countdown from "@/components/countdown";
+import HompageHero from "@/components/hero/hompageHero";
+import WaitImages, { ChangingText, NineGridImages } from "@/data/waitImages";
+import styles from "../styles/hompage.module.scss";
+import { useEffect, useState } from "react";
+import NailartSwiper from "@/components/nailartSwiper";
+import ChangingTexts from "@/components/changingText/ChangingTexts";
 import Link from "next/link";
-// import { Inter } from "next/font/google";
+import { MdOutlineArrowRightAlt, MdOutlineArrowLeftAlt } from "react-icons/md";
 
-// const inter = Inter({ subsets: ["latin"] });
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
-export default function Home() {
+export default function Home({ country }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />
+  };
+
+  useEffect(() => {
+    const removeSlickArrows = () => {
+      const slickPrev = document.querySelector('.slick-prev');
+      const slickNext = document.querySelector('.slick-next');
+      if (slickPrev) slickPrev.style.display = 'none';
+      if (slickNext) slickNext.style.display = 'none';
+    };
+    removeSlickArrows();
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-[#5a141d]/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-[#5a141d] lg:p-4 lg:dark:bg-[#5a141d]/30 text-gray-800">
-          Get right into&nbsp;
-          <code className="font-mono font-bold text-[#5a141d]">
-            <Link href="https://shop.nailsrepublic.co">Our Store!</Link>
-          </code>
-        </p>
-
-        {/* <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div> */}
-      </div>
-
-      <div className="relative flex place-items-center">
-        <Image
-          className="relative"
-          src="/images/logo.png"
-          alt="NailsRepublic Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mt-2 mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://shop.nailsrepublic.co"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-[#5a141d] hover:bg-[#5a141d] hover:dark:border-[#6cc070] hover:dark:bg-[#6cc070]/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold text-[#6cc070]`}>
-            Shop{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {`Shop amazing products for everything manicure and pedicure. We don't have the words, see for yourself!`}
-          </p>
-        </a>
-
-        <a
-          href="https://blog.nailsrepublic.co"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-[#0038CB] hover:bg-[#0038CB]hover:dark:border-[#0038CB] hover:dark:bg-[#0038CB]/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold text-[#0038CB]`}>
-            Blog{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about NailsRepublic, get free nail health guides, bacterial
-            and fungal nail treatments. Join the community!
-          </p>
-        </a>
-
-        <a
-          href="https://www.youtube.com/@NailsRepublic"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-[#c9454b] hover:bg-[#c9454b]hover:dark:border-[#c9454b] hover:dark:bg-[#c9454b]/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold text-[#c9454b]`}>
-            Galleries{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover nail trendy styles from all our galleries. Learn simple
-            nail DIYs through our interactive sessions and quizzes for
-            giveaways!
-          </p>
-        </a>
-
-        <a
-          href="/aboutus"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-[#704271] hover:bg-[#704271]hover:dark:border-[#704271] hover:dark:bg-[#704271]/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold text-[#704271]`}>
-            About Us{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div>
+      <Header country={country} />
+      <main className="flex flex-col">
+        <HompageHero />
+        <Countdown />
+        <NailartSwiper />
+        <div>
+          <div className={styles.hero}>
+            <div className={styles.hero_first}>
+              <div>
+                <span>LIMITED TIME</span>
+                <h3>FREE NAIL TRIMMER SET ON ₦28000+ ORDERS</h3>
+                <p>Stay neat and refreshed with our sesh and trimming set pack</p>
+                <button>GET TREAT</button>
+                <p>
+                  Exclusions apply, while supplies last. <br />
+                  Add gifts to cart at checkout.
+                </p>
+              </div>
+            </div>
+            <div className={styles.hero_second}>
+              <img src="/heroSlider/nail-gift.png" alt="imagine" />
+            </div>
+          </div>
+        </div>
+        <ChangingTexts />
+        <div className={styles.video}>
+        <div className={styles.video_second}>
+  {/* <video controls autoPlay loop>
+    <source src="/videos/vid1.mp4" type="video/mp4" />
+  </video> */}
+  <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+    <iframe 
+      src="https://player.vimeo.com/video/980143724?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+      frameBorder="0" 
+      allow="autoplay;" 
+      style={{ position: 'absolute', top: '0', left: '0', bottom: '0', width: '100%', height: '100%', objectFit: 'cover' }} 
+      title="Hero Slider">
+    </iframe>
+  </div>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+</div>
+          <div className={styles.video_first}>
+            <div>
+              <span>FANCY STYLES START HERE</span>
+              <h1>BUNDLES MADE-FOR-YOU COMPLETE STARTER BUNDLES</h1>
+              <img src="" alt="" />
+              <p>Cleanse, prepare, design + protect</p>
+              <h3>FREE NAIL TRIMMER SET ON ₦28000+ ORDERS</h3>
+              <div className={styles.video_buttons}>
+                <button>SHOP NAIL REPAIR</button>
+                <button>SHOP STYLE DESIGNERS</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.gridText}>
+          <h1>AWESOME DESIGNS BEGINS HERE</h1>
+          <span>Create, Design, Treat + Protect.</span>
+          <Link href="https://shop.nailsrepublik.com">SHOP THE LOOKS</Link>
+        </div>
+        <Slider {...settings}  className={styles.sliderImageGrid}>
+        {NineGridImages.map((item, i)=>(
+          <div key={i}>
+        <div className={styles.imageGrid}>
+          <div className={styles.gridPart}>
+            {item.images.slice(0, 4).map((img, index) => (
+              <button key={index}>
+                <img src={img} alt={`Image ${index + 1}`} />
+              </button>
+            ))}
+          </div>
+          <div className={styles.gridPart}>
+            <button>
+              <img src={item.images[4]} alt="Image 5" />
+            </button>
+          </div>
+          <div className={styles.gridPart}>
+            {item.images.slice(5, 9).map((img, index) => (
+              <button key={index}>
+                <img src={img} alt={`Image ${index + 6}`} />
+              </button>
+            ))}
+          </div>
+        </div>
+        <h2 className={styles.itemName}>{item.name}</h2>
+        </div>
+        ))}
+        </Slider>
+      </main>
+    </div>
   );
+}
+
+// const SampleNextArrow = (props) => {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//     className={`${className} ${styles.arrow} ${styles.nextArrow}`}
+//     style={{ ...style, display: "block"}}
+//       onClick={onClick}
+//     ><FaLongArrowAltRight  />
+// </div>
+//   );
+// };
+
+// const SamplePrevArrow = (props) => {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//     className={`${className} ${styles.arrow} ${styles.prevArrow}`}
+//     style={{ ...style, display: "block"}}
+//       onClick={onClick}
+//     ><FaLongArrowAltRight  />
+// </div>
+//   );
+// };
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      country: {
+        name: "Nigeria",
+        flag: "https://cdn.ipregistry.co/flags/emojitwo/ng.svg",
+        code: "NG",
+      },
+    },
+  };
 }

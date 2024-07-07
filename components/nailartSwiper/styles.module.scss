@@ -1,0 +1,92 @@
+.artwork {
+    background: #fff;
+    padding: 2rem 0.5rem;
+    &_heading {
+      font-family: Brown(woff), sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 0.2rem;
+    }
+    &_subheading {
+      font-weight: 300;
+      font-family: Brown(woff), sans-serif;
+      font-size: 16px;
+      text-transform: capitalize;
+      color: #000;
+      // margin-bottom: 1rem;
+    }
+  
+    &_container {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      margin-top: 2rem;
+    }
+    &_product{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    &_name {
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: capitalize;
+      letter-spacing: 0.01em;
+      font-family: Brown(woff), sans-serif;
+      margin: 0.2rem 0;
+      width: 300px;
+    }
+    &_price {
+      display: flex;
+      flex-direction: row;
+      font-size: 14px;
+      gap: 5px;
+      :nth-child(1) {
+        text-decoration: line-through;
+        color: #ccc;
+      }
+      :nth-child(2) {
+        color: #3d3d3d;
+      }
+    }
+  }
+  
+  .imageContainer {
+    position: relative;
+    width: 300px;
+        
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      
+    &_category {
+      position: absolute;
+      background: #fff;
+      top: .5rem;
+      left: 0;
+      padding: .1rem .5rem;
+      z-index: 11;
+    }
+  button {
+    z-index: 10;
+      position: absolute;
+      top: 15.7rem;
+      left: 0;
+    background: $dark-red-color;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    width: 100%;
+    height: 40px;
+    
+  }
+  }
