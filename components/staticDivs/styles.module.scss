@@ -1,0 +1,80 @@
+.allstaticdivs {
+  // margin-top: 4rem;
+  // padding: 4rem 0;
+  padding: 2rem 0.5rem;
+  @media (max-width: 900px) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.allsmallh1s {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-family: Brown(woff), sans-serif;
+}
+.allspans {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-family: Brown(woff), sans-serif;
+}
+.allh5s {
+  margin-top: 5px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #000;
+  @media (max-width: 900px) {
+    font-size: 0.9rem;
+    // font-weight: 400;
+  }
+}
+.rating {
+  color: #000;
+  display: flex;
+  gap: 6px;
+  svg {
+    fill: #000;
+    font-size: 10px;
+  }
+}
+
+.mySwiper {
+  padding: 20px 0;
+  // @media (min-width: 900px)
+  //  {
+  //     padding: 3px 0;
+  // }
+  &_slide {
+    margin-right: 0.25rem;
+    height: 100%;
+    width: 290px;
+    overflow: hidden;
+    img {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    &__services {
+      background: #c7aa9b;
+      // height: 260px;
+      overflow: hidden;
+      img {
+        height: 260px !important;
+        object-position: top;
+        object-fit: cover;
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    &_slide {
+      // width: 200px;
+      img {
+        height: 220px;
+      }
+    }
+  }
+}

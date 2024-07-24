@@ -1,0 +1,99 @@
+.hero {
+    // height: 30vh;
+    position: relative;
+    z-index: 12;
+    width: 100%;
+  
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 2rem;
+  
+    &_first {
+      background: #BEDEC5;
+      display: flex;
+      align-items: center;
+     
+  
+      div {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        color: #000;
+        max-width: 70%;
+        margin: 0 auto;
+        align-items: center;
+        span {
+          font-size: 12px;
+        }
+        h3 {
+          font-size: 34px;
+          line-height: 40px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          font-family: Brown(woff), sans-serif;
+          
+        }
+        p {
+          font-family: Brown(woff), sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+        }
+        button {
+        //   text-align: left;
+          background: #fff;
+          color: #000;
+          padding: 10px 26px;
+          width: fit-content;
+        }
+      }
+    }
+  
+    &_second {
+        background: #586856;
+
+      img {
+        // height: 40vh;
+        width: 100%;
+        object-fit: cover;
+        // object-position: center;
+        // margin: 4rem 0 0 4rem;
+      }
+    }
+  
+    @media (max-width: 960px) {
+        grid-template-columns: 1fr 1fr;
+      &_first {
+        
+        div {
+          max-width: 90%;
+          h3 {
+            font-size: 22px;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 600px) {
+      height: auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+  
+      &_first {
+        order: 2; /* Move text to the second row */
+      }
+  
+      &_second {
+        order: 1; /* Move image to the first row */
+  
+        img {
+          height: 50vh;
+          width: 100%;
+          object-fit: cover;
+          object-position: 20% 80%;
+        }
+      }
+    }
+  }

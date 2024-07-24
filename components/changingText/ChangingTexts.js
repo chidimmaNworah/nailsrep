@@ -41,7 +41,7 @@ const ChangingTexts = () => {
       </div> */}
       </div>
     </div>
-  <div className={styles.loader} />
+  {/* <div className={styles.loader} /> */}
   
   </>
   );

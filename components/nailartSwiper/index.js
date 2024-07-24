@@ -1,18 +1,19 @@
 import React, {useState} from 'react'
 import {WaitImages} from '@/data/waitImages'
 import styles from './styles.module.scss'
+import { motion } from 'framer-motion';
 
 export default function NailartSwiper() {
     // Create a state to keep track of the currently hovered image index
   const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <div className={styles.artwork}>
-          <p className={styles.artwork_heading}>
+          <motion.p initial={{opacity: 0, y: 0}} whileInView={{opacity: 1, y: 0, transition: {duration: 1}}} exit={{ opacity: 0, y: 0}} className={styles.artwork_heading}>
             Meet the nails republik artwork
-          </p>
-          <span className={styles.artwork_subheading}>
+          </motion.p>
+          <motion.span initial={{opacity: 0, y: 0}} whileInView={{opacity: 1, y: 0, transition: {duration: 1}}} exit={{ opacity: 0, y: 0}} className={styles.artwork_subheading}>
             Your nails on the Republik? It can only get better
-          </span>
+          </motion.span>
           <div className={styles.artwork_container}>
             {WaitImages.map((item, index) => (
               <div className={styles.artwork_product} key={index}>
@@ -21,7 +22,9 @@ export default function NailartSwiper() {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <img
+                  <motion.img whileHover={{ scale: 1.03 }}
+           onHoverStart={e =>{}}
+           onHoverEnd={e=>{}}
                     src={hoveredIndex === index && item.images[1] ? item.images[1] : item.images[0]}
                     alt={item.name}
                     className="first-image"

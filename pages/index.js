@@ -1,132 +1,268 @@
 import Header from "@/components/header";
 import Countdown from "@/components/countdown";
 import HompageHero from "@/components/hero/hompageHero";
-import WaitImages, { ChangingText, NineGridImages } from "@/data/waitImages";
+import WaitImages, { ChangingText } from "@/data/waitImages";
 import styles from "../styles/hompage.module.scss";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import NailartSwiper from "@/components/nailartSwiper";
 import ChangingTexts from "@/components/changingText/ChangingTexts";
 import Link from "next/link";
-import { MdOutlineArrowRightAlt, MdOutlineArrowLeftAlt } from "react-icons/md";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { MdOutlineArrowRightAlt, MdOutlineArrowLeftAlt } from "react-icons/md";
+import {
+  FaLongArrowAltLeft,
+  FaLongArrowAltRight,
+  FaStar,
+  FaStarHalfAlt,
+} from "react-icons/fa";
+import GiftHero from "@/components/giftHero/giftHero";
+import VideoHero from "@/components/hero/videoHero";
+import GridHero from "@/components/hero/gridHero";
+import StaticDiv1 from "@/components/staticDivs/staticDiv1";
+import StaticDiv2 from "@/components/staticDivs/staticDiv2";
+import StaticDiv3 from "@/components/staticDivs/staticDiv3";
+import StaticDiv4 from "@/components/staticDivs/staticDiv4";
+import Footer from "@/components/footer";
 
 export default function Home({ country }) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />
-  };
-
   useEffect(() => {
     const removeSlickArrows = () => {
-      const slickPrev = document.querySelector('.slick-prev');
-      const slickNext = document.querySelector('.slick-next');
-      if (slickPrev) slickPrev.style.display = 'none';
-      if (slickNext) slickNext.style.display = 'none';
+      const slickPrev = document.querySelector(".slick-prev");
+      const slickNext = document.querySelector(".slick-next");
+      if (slickPrev) slickPrev.style.display = "none";
+      if (slickNext) slickNext.style.display = "none";
     };
     removeSlickArrows();
   }, []);
 
+  const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible,
+  };
+
   return (
     <div>
       <Header country={country} />
-      <main className="flex flex-col">
-        <HompageHero />
-        <Countdown />
-        <NailartSwiper />
-        <div>
-          <div className={styles.hero}>
-            <div className={styles.hero_first}>
+      <main className="flex flex-col my-0">
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <HompageHero />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <Countdown />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <NailartSwiper />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <GiftHero />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <StaticDiv1 />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <StaticDiv2 />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <ChangingTexts />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <StaticDiv3 />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <VideoHero />
+        </motion.div>
+
+        {/* brands1 start */}
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+        >
+          <div className={styles.brands1}>
+            <div className="mb-8">
+              <h1>NEED MORE INSPO? WE GOT YOU</h1>
+              <span>Discover new designs, products, trends and more.</span>
+            </div>
+            <div className="flex flex-wrap justify-center items-stretch gap-1">
+              <div className="flex flex-col items-start flex-1 gap-1">
+                <div className="h-60 w-full overflow-hidden">
+                  <img
+                    src="/howto1.jpg"
+                    alt="nailart"
+                    className="h-full w-full object-cover object-top transition-transform ease-out duration-300 transform hover:scale-125"
+                  />
+                </div>
+                <h5 className={styles.allh5s}>
+                  <a
+                    href="https://blog.nailsrepublik.com/nailcare/tips"
+                    target="_blank"
+                  >
+                    NAIL REPUBLIK TIPS
+                  </a>
+                </h5>
+                <span className={styles.allspans}>
+                  Breaking down nail designs that everyone's talking about.
+                </span>
+              </div>
+              <div className="flex flex-col items-start flex-1 gap-1">
+                <div className="h-60 w-full overflow-hidden">
+                  <img
+                    src="/howto3.jpg"
+                    alt="nailcare"
+                    className="h-full w-full object-cover object-top transition-transform  ease-out duration-300 transform hover:scale-125"
+                  />
+                </div>
+                <h5 className={styles.allh5s}>
+                  <a
+                    href="https://nailsrepublik.com/nailart/gallery"
+                    target="_blank"
+                  >
+                    DIVA LOOKS
+                  </a>
+                </h5>
+                <span className={styles.allspans}>
+                  All the deep and complex styles you can recreate at home
+                </span>
+              </div>
+              <div className="flex flex-col items-start flex-1 gap-1">
+                <div className="h-60 w-full overflow-hidden">
+                  <img
+                    src="/howto2.jpg"
+                    alt="nailequipments"
+                    className="h-full w-full object-cover object-bottom ease-out transition-transform duration-300 transform hover:scale-125"
+                  />
+                </div>
+                <h5 className={styles.allh5s}>
+                  <a
+                    href="https://www.youtube.com/@nailsrepublik"
+                    target="_blank"
+                  >
+                    NAIL HOW-TOS
+                  </a>
+                </h5>
+                <span className={styles.allspans}>
+                  Endless inspo, exclusive styling tips + must-try techniques.
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+        {/* brands1 start */}
+
+        {/* Grid text start */}
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={styles.gridText}>
+            <h1>AWESOME DESIGNS BEGINS HERE</h1>
+            <span>Create, Design, Treat + Protect.</span>
+            <Link href="https://shop.nailsrepublik.com">SHOP THE LOOKS</Link>
+          </div>
+        </motion.div>
+        {/* Grid text end */}
+
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <GridHero />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
+        >
+          <StaticDiv4 />
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+        >
+          <div className={styles.brands}>
+            <div className="mb-8">
+              <h1>THE NAILS REPUBLIK BEAUTY BRANDS</h1>
+              <span>
+                Kimmoramicky's mission of Nail art, nail care, heavy equipments
+                and tools for all.
+              </span>
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-4">
               <div>
-                <span>LIMITED TIME</span>
-                <h3>FREE NAIL TRIMMER SET ON ₦28000+ ORDERS</h3>
-                <p>Stay neat and refreshed with our sesh and trimming set pack</p>
-                <button>GET TREAT</button>
-                <p>
-                  Exclusions apply, while supplies last. <br />
-                  Add gifts to cart at checkout.
-                </p>
+                <img
+                  src="/nailart.jpg"
+                  alt="nailart"
+                  width={200}
+                  className="h-60 object-cover"
+                />
+                <p>Nail Art</p>
               </div>
-            </div>
-            <div className={styles.hero_second}>
-              <img src="/heroSlider/nail-gift.png" alt="imagine" />
-            </div>
-          </div>
-        </div>
-        <ChangingTexts />
-        <div className={styles.video}>
-        <div className={styles.video_second}>
-  {/* <video controls autoPlay loop>
-    <source src="/videos/vid1.mp4" type="video/mp4" />
-  </video> */}
-  <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-    <iframe 
-      src="https://player.vimeo.com/video/980143724?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-      frameBorder="0" 
-      allow="autoplay;" 
-      style={{ position: 'absolute', top: '0', left: '0', bottom: '0', width: '100%', height: '100%', objectFit: 'cover' }} 
-      title="Hero Slider">
-    </iframe>
-  </div>
-  <script src="https://player.vimeo.com/api/player.js"></script>
-</div>
-          <div className={styles.video_first}>
-            <div>
-              <span>FANCY STYLES START HERE</span>
-              <h1>BUNDLES MADE-FOR-YOU COMPLETE STARTER BUNDLES</h1>
-              <img src="" alt="" />
-              <p>Cleanse, prepare, design + protect</p>
-              <h3>FREE NAIL TRIMMER SET ON ₦28000+ ORDERS</h3>
-              <div className={styles.video_buttons}>
-                <button>SHOP NAIL REPAIR</button>
-                <button>SHOP STYLE DESIGNERS</button>
+              <div>
+                <img
+                  src="/nailcare.jpeg"
+                  alt="nailcare"
+                  width={200}
+                  className="h-60 object-cover"
+                />
+                <p>Nail Care</p>
+              </div>
+              <div>
+                <img
+                  src="/nailequipments.jpg"
+                  alt="nailequipments"
+                  width={200}
+                  className="h-60 object-cover"
+                />
+                <p>Nail Equipments</p>
+              </div>
+              <div>
+                <img
+                  src="/nailtools.webp"
+                  alt="nailtools"
+                  width={200}
+                  className="h-60 object-cover"
+                />
+                <p>Nail Tools</p>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.gridText}>
-          <h1>AWESOME DESIGNS BEGINS HERE</h1>
-          <span>Create, Design, Treat + Protect.</span>
-          <Link href="https://shop.nailsrepublik.com">SHOP THE LOOKS</Link>
-        </div>
-        <Slider {...settings}  className={styles.sliderImageGrid}>
-        {NineGridImages.map((item, i)=>(
-          <div key={i}>
-        <div className={styles.imageGrid}>
-          <div className={styles.gridPart}>
-            {item.images.slice(0, 4).map((img, index) => (
-              <button key={index}>
-                <img src={img} alt={`Image ${index + 1}`} />
-              </button>
-            ))}
-          </div>
-          <div className={styles.gridPart}>
-            <button>
-              <img src={item.images[4]} alt="Image 5" />
-            </button>
-          </div>
-          <div className={styles.gridPart}>
-            {item.images.slice(5, 9).map((img, index) => (
-              <button key={index}>
-                <img src={img} alt={`Image ${index + 6}`} />
-              </button>
-            ))}
-          </div>
-        </div>
-        <h2 className={styles.itemName}>{item.name}</h2>
-        </div>
-        ))}
-        </Slider>
+        </motion.div>
       </main>
+      <Footer />
     </div>
   );
 }

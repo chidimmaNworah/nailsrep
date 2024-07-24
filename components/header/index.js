@@ -10,6 +10,7 @@ import { IoBagOutline } from "react-icons/io5";
 import styles from "./styles.module.scss";
 import ProductList from "./ProductList";
 import { useRouter } from "next/router";
+import { FaStar } from "react-icons/fa";
 
 export default function Header({country}) {
   const [visible, setVisible] = useState(false);
@@ -58,7 +59,7 @@ export default function Header({country}) {
   return (
     <div className={styles.head}>
      {!scrolled && (
-          <div className="w-full bg-[#441617] h-full text-white py-1 text-center items-center">
+          <div className={styles.head_rem}>
             <p>
               Create an account to unlock free shipping in your country{" "}
               {/* <Link href="https://shop.nailsrepublik.com/signin">
@@ -71,9 +72,9 @@ export default function Header({country}) {
 
       <div className="flex items-center gap-4">
               <img src={country.flag} alt="nigerian_flag" className="w-[40px]" />
-              {/* <span>
-                {country.name} | {country.code}
-              </span> */}
+              <span className={styles.countryName}>
+                NG | English
+              </span>
             </div>
         <div className="flex gap-2">
           <Link href="/">
@@ -222,13 +223,56 @@ export default function Header({country}) {
         </div>
 
       </div>
-      <div className="w-full bg-white h-full text-[#441617] py-1 text-center items-center">
-            <p>
-              Create an account to unlock free shipping in your country{" "}
-              <Link href="https://shop.nailsrepublik.com/signin">
-                SIGN IN | SIGN UP
+      <div className={styles.head_rem2}>
+            <ul className={styles.navtype}>
+              <li>
+              <Link href="" legacyBehavior>
+              <a href="https://blog.nailsrepublik.com" target="_blank">
+                Blog
+                </a>
               </Link>
-            </p>
+              </li><li>
+              <Link href="" legacyBehavior>
+              <a href="https://shop.nailsrepublik.com" target="_blank">
+                Store
+                </a>
+              </Link>
+              </li>
+            <li>
+              <Link href="https://shop.nailsrepublik.com">
+                Bestsellers
+              </Link>
+              </li>
+            <li>
+              <Link href="https://shop.nailsrepublik.com">
+                Tools
+              </Link>
+              </li>
+            <li>
+              <Link href="https://shop.nailsrepublik.com">
+                Nailcare
+              </Link>
+              </li>
+              <li>
+              <Link href="https://shop.nailsrepublik.com">
+                Nailart
+              </Link>
+              </li>
+              <li>
+              <Link href="https://shop.nailsrepublik.com">
+                Jewels
+              </Link>
+              </li>
+              <li>
+              <Link href="/services/virtual">
+                Virtual Services
+              </Link>
+              </li><li>
+              <Link href="https://shop.nailsrepublik.com/profile/wishlist">
+                + Save
+              </Link>
+              </li>
+            </ul>
           </div>
     </div>
   );
